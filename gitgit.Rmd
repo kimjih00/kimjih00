@@ -9,12 +9,22 @@ output: html_document
 install.packages("readxl")
 library(readxl)
 
+install.packages("tidyverse")
+install.packages("tidytext")
+
+library(tidyverse)
+library(tidytext)
+
 
 ```
 
 ```{r}
-df_exam <- read_excel("masahwe.xlsx")
+df_exam <- read_excel("마사회키워드.xlsx")
 
-df_exam
+text.v <- c(df_exam)
+
+text_df <- tibble(text = text.v)
+text_df
+
 ```
 
