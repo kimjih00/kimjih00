@@ -19,12 +19,47 @@ library(tidytext)
 ```
 
 ```{r}
-df_exam <- read_excel("마사회키워드.xlsx")
+text.v <- read_excel("마사회제목.xlsx")
 
-text.v <- c(df_exam)
+text_df <- text.v
 
-text_df <- tibble(text = text.v)
-text_df
+text_df %>% unnest_tokens(output = word, input = text)
+
+text_tk <- text_df %>% 
+  unnest_tokens(output = word,
+                input = text) %>% 
+  count(word, sort = T)
+
+text_tk
+
+text_tk %>%
+  filter(n >= 15, n < 31) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(word, n)) +
+  geom_col() +
+  coord_flip()
+
+text.c <- read_excel("수자원제목.xlsx")
+
+text_df1 <- text.c
+
+text_df1 %>% unnest_tokens(output = word, input = 제목)
+
+text_tk1 <- text_df1 %>% 
+  unnest_tokens(output = word,
+                input = 제목) %>% 
+  count(word, sort = T)
+
+text_tk1
+
+text_tk1 %>%
+  filter(n >= 15, n < 31) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  ggplot(aes(word, n)) +
+  geom_col() +
+  coord_flip()
+
+
 
 ```
 
