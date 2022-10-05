@@ -11,14 +11,47 @@ library(readxl)
 
 install.packages("tidyverse")
 install.packages("tidytext")
+install.packages("kableExtra")
 
 library(tidyverse)
 library(tidytext)
+library(kableExtra)
 
 
 ```
+```{r}
+
+list.files("data/.")
+
+list.files("data/knusenti/KnuSentiLex-master/")
+
+senti_name_v <- list.files("data/knusenti/KnuSentiLex-master/.")[9]
+
+senti_name_v
+
+read_lines(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% head(10)
+
+read_lines(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% 
+  head(10) %>% str_extract("\t|\n| ")
+
+read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% head(10)
+read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v), col_names = F) %>% head(10)
+
+senti_dic_df <- read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v), col_names = F)
+
+glimpse(senti_dic_df)
+
+senti_dic_df[1-5, ]
+
+senti_dic_df <- senti_dic_df %>% rename(word = X1, sScore = X2)
+glimpse(senti_dic_df)
+
+```
+
+
 
 ```{r}
+
 text.v <- read_excel("마사회제목.xlsx")
 
 text_df <- text.v
@@ -39,6 +72,8 @@ text_tk %>%
   geom_col() +
   coord_flip()
 
+
+
 text.c <- read_excel("수자원제목.xlsx")
 
 text_df1 <- text.c
@@ -58,6 +93,7 @@ text_tk1 %>%
   ggplot(aes(word, n)) +
   geom_col() +
   coord_flip()
+
 
 
 
