@@ -46,56 +46,108 @@ senti_dic_df[1-5, ]
 senti_dic_df <- senti_dic_df %>% rename(word = X1, sScore = X2)
 glimpse(senti_dic_df)
 
+install.packages("ggplot2")
+library(ggplot2)
+
 ```
 
+```{r}
+install.packages("wordcloud")
+library(wordcloud)
+install.packages("reshape2")
+library(reshape2)
+```
 
 
 ```{r}
 
 text.v <- read_excel("마사회제목.xlsx")
 
-text_df <- text.v
 
-text_df %>% unnest_tokens(output = word, input = text)
-
-text_tk <- text_df %>% 
+text.v %>% 
   unnest_tokens(output = word,
                 input = text) %>% 
   count(word, sort = T)
 
-text_tk
+tibble(text.v) %>% 
+  unnest_tokens(output = word, input = text,
+                token = "words") %>% 
+ inner_join(senti_dic_df)
 
-text_tk %>%
-  filter(n >= 15, n < 31) %>% 
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
   mutate(word = reorder(word, n)) %>% 
-  ggplot(aes(word, n)) +
-  geom_col() +
-  coord_flip()
+  slice_head(n = 20) -> text.r
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore)
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
 
 
+text.r %>% 
+  ggplot() + geom_col(aes(n, word), show.legend = F)
+```
 
-text.c <- read_excel("수자원제목.xlsx")
+```{r}
+text.v <- read_excel("수자원제목.xlsx")
 
-text_df1 <- text.c
 
-text_df1 %>% unnest_tokens(output = word, input = 제목)
-
-text_tk1 <- text_df1 %>% 
+text.v %>% 
   unnest_tokens(output = word,
-                input = 제목) %>% 
+                input = text) %>% 
   count(word, sort = T)
 
-text_tk1
+tibble(text.v) %>% 
+  unnest_tokens(output = word, input = text,
+                token = "words") %>% 
+ inner_join(senti_dic_df)
 
-text_tk1 %>%
-  filter(n >= 15, n < 31) %>% 
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
   mutate(word = reorder(word, n)) %>% 
-  ggplot(aes(word, n)) +
-  geom_col() +
-  coord_flip()
+  slice_head(n = 20) -> text.r
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore)
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
 
 
-
-
+text.r %>% 
+  ggplot() + geom_col(aes(n, word), show.legend = F)
+```
 ```
 
