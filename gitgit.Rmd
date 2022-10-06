@@ -58,10 +58,8 @@ install.packages("reshape2")
 library(reshape2)
 ```
 
-
 ```{r}
-
-text.v <- read_excel("마사회제목.xlsx")
+text.v <- read_excel("수자원키워드.xlsx")
 
 
 text.v %>% 
@@ -104,9 +102,8 @@ text.v %>%
 text.r %>% 
   ggplot() + geom_col(aes(n, word), show.legend = F)
 ```
-
 ```{r}
-text.v <- read_excel("수자원제목.xlsx")
+text.v <- read_excel("마사회키워드.xlsx")
 
 
 text.v %>% 
@@ -149,5 +146,3 @@ text.v %>%
 text.r %>% 
   ggplot() + geom_col(aes(n, word), show.legend = F)
 ```
-```
-
