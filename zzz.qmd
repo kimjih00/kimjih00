@@ -1,0 +1,166 @@
+---
+title: "수자원공사, 마사회 기사 비교분석"
+format: html
+author: 언론홍보학과 2019102107 김지후
+title-block-style: default
+title-block-banner: "#6E6E6E"
+date: 2022-10-12
+code-fold: true
+code-tools: true
+---
+
+```{r}
+```{r}
+#| warning: false
+
+
+install.packages("readxl",repos = "http://cran.us.r-project.org")
+library(readxl)
+
+install.packages("tidyverse",repos = "http://cran.us.r-project.org")
+install.packages("tidytext",repos = "http://cran.us.r-project.org")
+install.packages("kableExtra",repos = "http://cran.us.r-project.org")
+
+library(tidyverse)
+library(tidytext)
+library(kableExtra)
+
+install.packages("wordcloud",repos = "http://cran.us.r-project.org")
+library(wordcloud)
+
+list.files("data/.")
+
+list.files("data/knusenti/KnuSentiLex-master/")
+
+senti_name_v <- list.files("data/knusenti/KnuSentiLex-master/.")[9]
+
+senti_name_v
+
+read_lines(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% head(10)
+
+read_lines(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% 
+  head(10) %>% str_extract("\t|\n| ")
+
+read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% head(10)
+read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v), col_names = F) %>% head(10)
+
+senti_dic_df <- read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v), col_names = F)
+
+glimpse(senti_dic_df)
+
+senti_dic_df[1-5, ]
+
+senti_dic_df <- senti_dic_df %>% rename(word = X1, sScore = X2)
+glimpse(senti_dic_df)
+```
+
+```{r}
+text.v <- read_excel("마사회키워드.xlsx")
+text.z <- read_excel("수자원키워드.xlsx")
+
+text.v_df <-  text.v %>% 
+  unnest_tokens(word, text, token = "words") %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  slice_head(n = 20)
+
+text.v_df %>% 
+  ggplot() + geom_col(aes(n, word, fill = sScore), show.legend = F) +
+    labs(title = "마사회 키워드 감정빈도 분석")
+
+text.z_df <- text.z %>% 
+  unnest_tokens(word, text, token = "words") %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  filter(!word %in% c("대상")) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  slice_head(n = 20)
+
+
+text.z_df %>% 
+  ggplot() + geom_col(aes(n, word, fill = sScore), show.legend = F) +
+    labs(title = "수자원 공사 키워드 분석")
+
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+
+text.z %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+
+
+
+```
+
+```{r}
+
+text.z %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore) %>%
+   labs(title = "수자원공사 긍부정")
+
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore) %>%
+   labs(title = "마사회 긍부정")
+
+text.z %>%   
+  unnest_tokens(word, text, token = "words") %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>%
+  mutate(label = ifelse(sScore > 0, "1", ifelse(sScore < 0, "0", "2"))) %>%
+  filter(label != "중립") %>%
+  count(word, emotion, label, sort = T) %>%
+  filter(str_length(word) > 1) %>%
+  group_by(label = ifelse(label > 0, "긍정", "부정")) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = n,
+             y = reorder(word, n), fill = label)) +
+  geom_col(show.legend = F) +
+  facet_wrap(~label, scale = "free") +
+  labs(title = "수자원공사 긍정어 부정어")
+
+text.v %>%   
+  unnest_tokens(word, text, token = "words") %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>%
+  mutate(label = ifelse(sScore > 0, "1", ifelse(sScore < 0, "0", "2"))) %>%
+  filter(label != "중립") %>%
+  count(word, emotion, label, sort = T) %>%
+  filter(str_length(word) > 1) %>%
+  group_by(label = ifelse(label > 0, "긍정", "부정")) %>%
+  slice_head(n = 15) %>%
+  ggplot(aes(x = n,
+             y = reorder(word, n), fill = label)) +
+  geom_col(show.legend = F) +
+  facet_wrap(~label, scale = "free") +
+  labs(title = "마사회 긍정어 부정어")
+
+
+
+```
+
