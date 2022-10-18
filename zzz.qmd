@@ -9,23 +9,30 @@ code-fold: true
 code-tools: true
 ---
 
-```{r}
+## 빅카인즈에서 데이터셋을 추출해 두 공사간 비교분석을 실시함
+
+### 1. 필요 패키지 설치
+
+### 2. 각 공사 키워드별 상위단어 분석
+
+### 3. 각 공사 키워드별 긍정, 부정단어 분석
+
+### 필요 패키지 설치
+
 ```{r}
 #| warning: false
 
 
-install.packages("readxl",repos = "http://cran.us.r-project.org")
-library(readxl)
+package_list <- c("tidyverse", "tidytext", "readxl", "kableExtra", 
+                  "multilinguer", "RcppMeCab", "KoNLP", "lubridate", 
+                  "tidylo", "stm", "reshape2", "dplyr", "ggplot2", 
+                  "stringr", "rvest", "wordcloud", "tm", "VennDiagram", "gt",repos = "http://cran.us.r-project.org")
+ 
 
-install.packages("tidyverse",repos = "http://cran.us.r-project.org")
-install.packages("tidytext",repos = "http://cran.us.r-project.org")
-install.packages("kableExtra",repos = "http://cran.us.r-project.org")
-
+library(tidylo)
 library(tidyverse)
 library(tidytext)
 library(kableExtra)
-
-install.packages("wordcloud",repos = "http://cran.us.r-project.org")
 library(wordcloud)
 
 list.files("data/.")
@@ -54,12 +61,15 @@ senti_dic_df <- senti_dic_df %>% rename(word = X1, sScore = X2)
 glimpse(senti_dic_df)
 ```
 
+## 키워드 주요 단어 분석
+
 ```{r}
 text.v <- read_excel("마사회키워드.xlsx")
 text.z <- read_excel("수자원키워드.xlsx")
 
 text.v_df <-  text.v %>% 
-  unnest_tokens(word, text, token = "words") %>% 
+  unnest_tokens(word, text, token = "words") %>%
+  mutate(ID = factor(row_number())) %>% 
   inner_join(senti_dic_df) %>% 
   count(word, sScore, sort = T) %>% 
   filter(str_length(word) > 1) %>% 
@@ -72,6 +82,7 @@ text.v_df %>%
 
 text.z_df <- text.z %>% 
   unnest_tokens(word, text, token = "words") %>% 
+  mutate(ID = factor(row_number())) %>% 
   inner_join(senti_dic_df) %>% 
   count(word, sScore, sort = T) %>% 
   filter(str_length(word) > 1) %>% 
@@ -108,6 +119,8 @@ text.z %>%
 
 
 ```
+
+## 공사간 긍정, 부정어 분석
 
 ```{r}
 
@@ -159,6 +172,24 @@ text.v %>%
   geom_col(show.legend = F) +
   facet_wrap(~label, scale = "free") +
   labs(title = "마사회 긍정어 부정어")
+
+
+
+```
+
+```{r}
+pkg_v <- c("tidyverse", "tidytext", "tidylo")
+lapply(pkg_v, require, ch = T)
+
+text.v_df <- text.v %>% 
+  mutate(text = str_remove_all(text, "[^(\\w+|\\s)]")) %>%  
+  unnest_tokens(word, text, token = "words", drop = F)
+
+text.v_df %>% 
+  filter(!word %in% c("한국마사회", "경마", "영천경마공원", "기자")) %>% 
+  filter(str_detect(word, "[:alpha:]+"))
+
+
 
 
 

@@ -1,0 +1,228 @@
+---
+title: "수자원공사, 마사회 기사 비교 분석"
+format: html
+editor: visual
+---
+
+
+# 수자원 공사와 한국 마사회 두 기업간 기사 분석
+
+## 기간: 2021년 1월\~ 현재
+
+## 빅카인즈로 두 기업의 기사 제목과 키워드를 추출해 긍정, 부정어의 빈도와 추출을 해보았습니다.
+
+
+```{r}
+#| warning: false
+
+
+install.packages("readxl",repos = "http://cran.us.r-project.org")
+library(readxl)
+
+install.packages("tidyverse",repos = "http://cran.us.r-project.org")
+install.packages("tidytext",repos = "http://cran.us.r-project.org")
+install.packages("kableExtra",repos = "http://cran.us.r-project.org")
+
+library(tidyverse)
+library(tidytext)
+library(kableExtra)
+
+install.packages("wordcloud",repos = "http://cran.us.r-project.org")
+library(wordcloud)
+```
+
+```{r}
+#| warning: false
+
+list.files("data/.")
+
+list.files("data/knusenti/KnuSentiLex-master/")
+
+senti_name_v <- list.files("data/knusenti/KnuSentiLex-master/.")[9]
+
+senti_name_v
+
+read_lines(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% head(10)
+
+read_lines(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% 
+  head(10) %>% str_extract("\t|\n| ")
+
+read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v)) %>% head(10)
+read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v), col_names = F) %>% head(10)
+
+senti_dic_df <- read_tsv(str_c("data/knusenti/KnuSentiLex-master/", senti_name_v), col_names = F)
+
+glimpse(senti_dic_df)
+
+senti_dic_df[1-5, ]
+
+senti_dic_df <- senti_dic_df %>% rename(word = X1, sScore = X2)
+glimpse(senti_dic_df)
+
+
+```
+
+
+## 마사회, 수자원 제목 정리
+
+
+```{r}
+#| warning: false
+
+text.z <- read_excel("마사회제목.xlsx")
+
+
+text.z %>% 
+  unnest_tokens(output = word,
+                input = text) %>% 
+  count(word, sort = T)
+
+tibble(text.z) %>% 
+  unnest_tokens(output = word, input = text,
+                token = "words") %>% 
+ inner_join(senti_dic_df)
+
+
+text.z %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  slice_head(n = 20) -> text.4
+
+
+text.z %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore)
+
+
+text.z %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+
+
+
+  
+text.x <- read_excel("수자원제목.xlsx")
+
+
+text.x %>% 
+  unnest_tokens(output = word,
+                input = text) %>% 
+  count(word, sort = T)
+
+tibble(text.x) %>% 
+  unnest_tokens(output = word, input = text,
+                token = "words") %>% 
+ inner_join(senti_dic_df)
+
+
+text.x %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  slice_head(n = 20) -> text.2
+
+
+
+text.x %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore) 
+
+
+text.x %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+
+```
+
+
+## 한국 마사회 뉴스 키워드 분석 (4621개 기사)
+
+
+```{r}
+#| warning: false
+
+text.v <- read_excel("마사회키워드.xlsx")
+
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore)
+
+text.v %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+
+ tibble(text.v) %>% 
+  unnest_tokens(output = word, 
+                input = text,
+                token = "words" ) %>%
+  separate(col = word, 
+           into = c("word", "morph"),
+           sep = ",") %>% 
+  inner_join(senti_dic_df)
+ 
+```
+
+
+## 수자원공사 뉴스 키워드 분석 (4621개 기사)
+
+
+```{r}
+
+#| warning: false
+
+text.b <- read_excel("수자원키워드.xlsx")
+
+
+text.b %>% 
+  unnest_tokens(word, text) %>% 
+  left_join(senti_dic_df) %>% 
+  mutate(sScore = ifelse(sScore >= 1, "긍정",
+                         ifelse(sScore <= -1, "부정", "중립"))) %>% 
+  count(sScore)
+
+text.b %>% 
+  unnest_tokens(word, text) %>% 
+  inner_join(senti_dic_df) %>% 
+  mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
+  filter(emotion != "중립") %>% 
+  count(word, emotion, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
+  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+
+  
+```
+

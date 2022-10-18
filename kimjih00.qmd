@@ -1,35 +1,41 @@
 ---
-title: "지후"
+title: "수자원공사, 마사회 기사 비교분석"
 format: html
-editor: visual
+author: 언론홍보학과 2019102107 김지후
+title-block-style: default
+title-block-banner: "#6E6E6E"
+date: 2022-10-12
+code-fold: true
+code-tools: true
 ---
 
+# 수자원 공사와 한국 마사회 두 기업간 기사 분석
+
+## 기간: 2021년 1월\~ 현재
+
+## 빅카인즈로 두 기업의 기사 제목과 키워드를 추출해 긍정, 부정어의 빈도와 추출을 해보았습니다.
+
 ```{r}
-#| echo: false
-#| include: false
+#| warning: false
 
 
-install.packages("readxl")
+install.packages("readxl",repos = "http://cran.us.r-project.org")
 library(readxl)
 
-install.packages("tidyverse")
-install.packages("tidytext")
-install.packages("kableExtra")
+install.packages("tidyverse",repos = "http://cran.us.r-project.org")
+install.packages("tidytext",repos = "http://cran.us.r-project.org")
+install.packages("kableExtra",repos = "http://cran.us.r-project.org")
 
 library(tidyverse)
 library(tidytext)
 library(kableExtra)
 
-install.packages("wordcloud")
+install.packages("wordcloud",repos = "http://cran.us.r-project.org")
 library(wordcloud)
-install.packages("ggplot2")
-library(ggplot2)
-
 ```
 
 ```{r}
-#| echo: false
-#| include: false
+#| warning: false
 
 list.files("data/.")
 
@@ -62,22 +68,23 @@ glimpse(senti_dic_df)
 ## 마사회, 수자원 제목 정리
 
 ```{r}
+#| warning: false
 
-text.3 <- read_excel("마사회제목.xlsx")
+text.z <- read_excel("마사회제목.xlsx")
 
 
-text.3 %>% 
+text.z %>% 
   unnest_tokens(output = word,
                 input = text) %>% 
   count(word, sort = T)
 
-tibble(text.3) %>% 
+tibble(text.z) %>% 
   unnest_tokens(output = word, input = text,
                 token = "words") %>% 
  inner_join(senti_dic_df)
 
 
-text.3 %>% 
+text.z %>% 
   unnest_tokens(word, text) %>% 
   inner_join(senti_dic_df) %>% 
   count(word, sScore, sort = T) %>% 
@@ -86,17 +93,15 @@ text.3 %>%
   slice_head(n = 20) -> text.4
 
 
-text.3 %>% 
+text.z %>% 
   unnest_tokens(word, text) %>% 
   left_join(senti_dic_df) %>% 
   mutate(sScore = ifelse(sScore >= 1, "긍정",
                          ifelse(sScore <= -1, "부정", "중립"))) %>% 
   count(sScore)
 
-text.r %>% 
-  ggplot() + geom_col(aes(n, word), show.legend = F)
 
-text.3 %>% 
+text.z %>% 
   unnest_tokens(word, text) %>% 
   inner_join(senti_dic_df) %>% 
   mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
@@ -109,21 +114,21 @@ text.3 %>%
 
 
   
-text.1 <- read_excel("수자원제목.xlsx")
+text.x <- read_excel("수자원제목.xlsx")
 
 
-text.1 %>% 
+text.x %>% 
   unnest_tokens(output = word,
                 input = text) %>% 
   count(word, sort = T)
 
-tibble(text.1) %>% 
+tibble(text.x) %>% 
   unnest_tokens(output = word, input = text,
                 token = "words") %>% 
  inner_join(senti_dic_df)
 
 
-text.1 %>% 
+text.x %>% 
   unnest_tokens(word, text) %>% 
   inner_join(senti_dic_df) %>% 
   count(word, sScore, sort = T) %>% 
@@ -133,17 +138,15 @@ text.1 %>%
 
 
 
-text.1 %>% 
+text.x %>% 
   unnest_tokens(word, text) %>% 
   left_join(senti_dic_df) %>% 
   mutate(sScore = ifelse(sScore >= 1, "긍정",
                          ifelse(sScore <= -1, "부정", "중립"))) %>% 
-  count(sScore)
+  count(sScore) 
 
-text.2 %>% 
-  ggplot() + geom_col(aes(n, word), show.legend = F)
 
-text.1 %>% 
+text.x %>% 
   unnest_tokens(word, text) %>% 
   inner_join(senti_dic_df) %>% 
   mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
@@ -155,12 +158,10 @@ text.1 %>%
 
 ```
 
-## 마사회 기사 키워드 정리
+## 한국 마사회 뉴스 키워드 분석 (4621개 기사)
 
 ```{r}
-
-#| echo: false
-#| include: false
+#| warning: false
 
 text.v <- read_excel("마사회키워드.xlsx")
 
@@ -182,29 +183,46 @@ text.v %>%
   reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
   comparison.cloud(colors = c("blue", "red"), max.words = 50)
 
+ tibble(text.v) %>% 
+  unnest_tokens(output = word, 
+                input = text,
+                token = "words" ) %>%
+  separate(col = word, 
+           into = c("word", "morph"),
+           sep = ",") %>% 
+  inner_join(senti_dic_df)
+ 
+text.v_df <-  text.v %>% 
+  unnest_tokens(word, text, token = "words") %>% 
+  inner_join(senti_dic_df) %>% 
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  slice_head(n = 20)
 
-text.r %>% 
-  ggplot() + geom_col(aes(n, word), show.legend = F)
-
-text.v
+text.v_df %>% 
+  ggplot() + geom_col(aes(n, word, fill = sScore), show.legend = F) +
+    labs(title = "마사회 키워드 감정빈도 분석")
+ 
 ```
+
+## 수자원공사 뉴스 키워드 분석 (4621개 기사)
 
 ```{r}
 
-text.q <- read_excel("수자원키워드.xlsx")
+#| warning: false
+
+data.df <- read_excel("수자원키워드.xlsx")
 
 
-text.q %>% 
+data.df %>% 
   unnest_tokens(word, text) %>% 
   left_join(senti_dic_df) %>% 
   mutate(sScore = ifelse(sScore >= 1, "긍정",
                          ifelse(sScore <= -1, "부정", "중립"))) %>% 
   count(sScore)
 
-text.w %>% 
-  ggplot() + geom_col(aes(n, word), show.legend = F)
-
-text.q %>% 
+data.df %>% 
   unnest_tokens(word, text) %>% 
   inner_join(senti_dic_df) %>% 
   mutate(emotion = ifelse(sScore > 0, "긍정", ifelse(sScore < 0, "부정", "중립"))) %>% 
@@ -212,24 +230,18 @@ text.q %>%
   count(word, emotion, sort = T) %>% 
   filter(str_length(word) > 1) %>% 
   reshape2::acast(word ~ emotion, value.var = "n", fill = 0) %>% 
-  comparison.cloud(colors = c("blue", "red"), max.words = 50)
+  comparison.cloud(colors = c("blue", "red"), max.words = 50) -> text.s
 
-  
-```
-```{r}
-data.frame <- read_excel("수자원,마사회키워드.xlsx")
-
-text.0 <- data.frame
-
-text.0 %>%
-unnest_tokens(main, text , token = "word") %>% 
-  mutate(main = row_number()) %>% 
-  unnest_tokens(word, main) %>% 
+senti_df <- data.df %>% 
+  unnest_tokens(word, text, token = "words") %>% 
   inner_join(senti_dic_df) %>% 
-  mutate(emotion = ifelse(sScore > 0, "긍정", 
-                          ifelse(sScore < 0, "부정", "중립"))) %>% 
-  count(text, index = main)
+  count(word, sScore, sort = T) %>% 
+  filter(str_length(word) > 1) %>% 
+  filter(!word %in% c("대상")) %>% 
+  mutate(word = reorder(word, n)) %>% 
+  slice_head(n = 20)
 
-
+senti_df %>% 
+  ggplot() + geom_col(aes(n, word, fill = sScore), show.legend = F) +
+    labs(title = "수자원 공사 키워드 분석")
 ```
-
