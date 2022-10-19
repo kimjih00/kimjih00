@@ -155,76 +155,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="anchored" data-anchor-id="각-공사-키워드별-긍정-부정단어-분석">3. 각 공사 키워드별 긍정, 부정단어 분석</h3>
 </section>
 <section id="필요-패키지-설치-1" class="level3">
-<h3 class="anchored" data-anchor-id="필요-패키지-설치-1">필요 패키지 설치</h3>
+<h3 class="anchored" data-anchor-id="필요-패키지-설치-1">1. 필요 패키지 설치</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'readxl' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\Public\Documents\ESTsoft\CreatorTemp\RtmpgXVPyy\downloaded_packages</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'tidyverse' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\Public\Documents\ESTsoft\CreatorTemp\RtmpgXVPyy\downloaded_packages</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidytext"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'tidytext' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\Public\Documents\ESTsoft\CreatorTemp\RtmpgXVPyy\downloaded_packages</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"kableExtra"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'kableExtra' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\Public\Documents\ESTsoft\CreatorTemp\RtmpgXVPyy\downloaded_packages</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"wordcloud"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'wordcloud' successfully unpacked and MD5 sums checked
-
-The downloaded binary packages are in
-    C:\Users\Public\Documents\ESTsoft\CreatorTemp\RtmpgXVPyy\downloaded_packages</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>package_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidytext"</span>, <span class="st">"readxl"</span>, <span class="st">"kableExtra"</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"multilinguer"</span>, <span class="st">"RcppMeCab"</span>, <span class="st">"KoNLP"</span>, <span class="st">"lubridate"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"tidylo"</span>, <span class="st">"stm"</span>, <span class="st">"reshape2"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"stringr"</span>, <span class="st">"rvest"</span>, <span class="st">"wordcloud"</span>, <span class="st">"tm"</span>, <span class="st">"VennDiagram"</span>, <span class="st">"gt"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidylo)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "knusenti"     "knusenti.zip"</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data"                     "KnuSentiLex"             
@@ -235,16 +190,16 @@ The downloaded binary packages are in
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>senti_name_v <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/."</span>)[<span class="dv">9</span>]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>senti_name_v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>senti_name_v <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/."</span>)[<span class="dv">9</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>senti_name_v</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "SentiWord_Dict.txt"</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "(-;\t1"    "(;_;)\t-1" "(^^)\t1"   "(^-^)\t1"  "(^^*\t1"   "(^_^)\t1" 
@@ -252,15 +207,15 @@ The downloaded binary packages are in
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">str_extract</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">|</span><span class="sc">\n</span><span class="st">| "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">str_extract</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">|</span><span class="sc">\n</span><span class="st">| "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "\t" "\t" "\t" "\t" "\t" "\t" "\t" "\t" "\t" "\t"</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
@@ -279,7 +234,7 @@ The downloaded binary packages are in
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
@@ -298,9 +253,9 @@ The downloaded binary packages are in
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 14,855
@@ -310,7 +265,7 @@ $ X2 &lt;dbl&gt; 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, 1, -1, 1,
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>senti_dic_df[<span class="dv">1-5</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>senti_dic_df[<span class="dv">1-5</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 14,854 × 2
@@ -330,8 +285,8 @@ $ X2 &lt;dbl&gt; 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, 1, -1, 1,
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> senti_dic_df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">word =</span> X1, <span class="at">sScore =</span> X2)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> senti_dic_df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">word =</span> X1, <span class="at">sScore =</span> X2)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 14,855
@@ -342,136 +297,182 @@ $ sScore &lt;dbl&gt; 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, 1, -1
 </div>
 </section>
 </section>
-<section id="키워드-주요-단어-분석" class="level2">
-<h2 class="anchored" data-anchor-id="키워드-주요-단어-분석">키워드 주요 단어 분석</h2>
+<section id="마사회-키워드-주요-단어-분석" class="level2">
+<h2 class="anchored" data-anchor-id="마사회-키워드-주요-단어-분석">마사회 키워드 주요 단어 분석</h2>
+<p>###한국마사회 키워드 분석</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>text.v <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"마사회키워드.xlsx"</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>text.z <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"수자원키워드.xlsx"</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>text.v_df <span class="ot">&lt;-</span>  text.v <span class="sc">%&gt;%</span> </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining, by = "word"</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>text.v_df <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 키워드 감정빈도 분석"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>m_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"masahwe.xlsx"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(main)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>m_df2 <span class="ot">&lt;-</span> m_df</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>m_tk <span class="ot">&lt;-</span> m_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> T)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>m_tk <span class="ot">&lt;-</span> m_tk <span class="sc">%&gt;%</span> </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"한국마사회"</span>, <span class="st">"제주"</span>, <span class="st">"경마"</span>, <span class="st">"영천"</span>, <span class="st">"기수"</span>, <span class="st">"지부"</span>, <span class="st">"마사회"</span>,<span class="st">"기관"</span>,<span class="st">"코로나"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(word, <span class="st">"[:alpha:]+"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n))</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>m_tk <span class="sc">%&gt;%</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 총빈도"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="zzz_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>text.z_df <span class="ot">&lt;-</span> text.z <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"대상"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>m_df2 <span class="ot">&lt;-</span>  m_df <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="fu">factor</span>(<span class="fu">row_number</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining, by = "word"</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>text.z_df <span class="sc">%&gt;%</span> </span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원 공사 키워드 분석"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="zzz_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>text.v <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining, by = "word"</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="zzz_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid" width="672"></p>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>text.z <span class="sc">%&gt;%</span> </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Joining, by = "word"</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="zzz_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<section id="마사회의-단어-빈도수를-살펴보면-경주마와-관련해-벌어들인-돈을-다른-지역-사업에-지나라가-지원하는-기사가-많아" class="level3">
+<h3 class="anchored" data-anchor-id="마사회의-단어-빈도수를-살펴보면-경주마와-관련해-벌어들인-돈을-다른-지역-사업에-지나라가-지원하는-기사가-많아">마사회의 단어 빈도수를 살펴보면, 경주마와 관련해 벌어들인 돈을 다른 지역 사업에 지나라가 지원하는 기사가 많아</h3>
 </section>
-<section id="공사간-긍정-부정어-분석" class="level2">
-<h2 class="anchored" data-anchor-id="공사간-긍정-부정어-분석">공사간 긍정, 부정어 분석</h2>
+<section id="나라가-지정한-유흥산업으로-번-돈을-많은-부분-환원한다는-평소-마사회의-이미지에-부합했습니다." class="level3">
+<h3 class="anchored" data-anchor-id="나라가-지정한-유흥산업으로-번-돈을-많은-부분-환원한다는-평소-마사회의-이미지에-부합했습니다.">나라가 지정한 유흥산업으로 번 돈을 많은 부분 환원한다는 평소 마사회의 이미지에 부합했습니다.</h3>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>text.z <span class="sc">%&gt;%</span> </span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍부정"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>m_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 키워드 감정빈도 분석"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="zzz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>m_df <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining, by = "word"</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
-# A tibble: 4 × 2
-  sScore      n
-  &lt;chr&gt;   &lt;int&gt;
-1 긍정    16977
-2 부정    10943
-3 중립       67
-4 &lt;NA&gt;   819221
-
-$title
-[1] "수자원공사 긍부정"
-
-attr(,"class")
-[1] "labels"</code></pre>
+<div class="cell-output-display">
+<p><img src="zzz_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="수자원-공사-키워드-분석" class="level3">
+<h3 class="anchored" data-anchor-id="수자원-공사-키워드-분석">수자원 공사 키워드 분석</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>s_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"수자원공사 2020.01.01~.xlsx"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>s_df2 <span class="ot">&lt;-</span> s_df</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>s_tk <span class="ot">&lt;-</span> s_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> T)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>s_tk <span class="ot">&lt;-</span> s_tk <span class="sc">%&gt;%</span> </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"한국수자원공사"</span>, <span class="st">"제주"</span>, <span class="st">"지역"</span>, <span class="st">"사업"</span>, <span class="st">"환경부"</span>, <span class="st">"주민"</span>, <span class="st">"수돗물"</span>,<span class="st">"수자원공사"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(word, <span class="st">"[:alpha:]+"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n))</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>s_tk <span class="sc">%&gt;%</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원 총빈도"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="zzz_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>text.v <span class="sc">%&gt;%</span> </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍부정"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s_df2 <span class="ot">&lt;-</span> s_df <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="fu">factor</span>(<span class="fu">row_number</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"피해"</span>,<span class="st">"안전"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "word"</code></pre>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>s_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원 공사 키워드 분석"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="zzz_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s_df <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"피해"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "word"</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="zzz_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="공사간-긍정-부정어-분석" class="level2">
+<h2 class="anchored" data-anchor-id="공사간-긍정-부정어-분석">공사간 긍정, 부정어 분석</h2>
+<p>###한국 마사회 감성 분석</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>m_df <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍부정"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining, by = "word"</code></pre>
@@ -494,55 +495,123 @@ attr(,"class")
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>text.z <span class="sc">%&gt;%</span>   </span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍정어 부정어"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>m_df <span class="sc">%&gt;%</span>   </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍정어 부정어"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining, by = "word"</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="zzz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="zzz_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>text.v <span class="sc">%&gt;%</span>   </span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
-<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
-<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍정어 부정어"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>text.m <span class="ot">&lt;-</span> m_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="마사회의-긍정어로는-대상-감사-안전-발전-개선-등이-있고" class="level3">
+<h3 class="anchored" data-anchor-id="마사회의-긍정어로는-대상-감사-안전-발전-개선-등이-있고">마사회의 긍정어로는 대상, 감사, 안전, 발전, 개선 등이 있고,</h3>
+</section>
+<section id="부정어로는-의혹-불법-위기-죽음-피해등이-있습니다.." class="level3">
+<h3 class="anchored" data-anchor-id="부정어로는-의혹-불법-위기-죽음-피해등이-있습니다..">부정어로는 의혹, 불법, 위기, 죽음, 피해등이 있습니다..</h3>
+</section>
+<section id="긍정어의-표현수가-부정어보다-2배-많은-것을-보아-대체적으로-긍정적인-기사의-수가-많다는-것을-파악할-수-있습니다." class="level3">
+<h3 class="anchored" data-anchor-id="긍정어의-표현수가-부정어보다-2배-많은-것을-보아-대체적으로-긍정적인-기사의-수가-많다는-것을-파악할-수-있습니다.">긍정어의 표현수가 부정어보다 2배 많은 것을 보아, 대체적으로 긍정적인 기사의 수가 많다는 것을 파악할 수 있습니다.</h3>
+<p>###한국 수자원공사 감성 분석</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>s_df <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍부정"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining, by = "word"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+# A tibble: 4 × 2
+  sScore       n
+  &lt;chr&gt;    &lt;int&gt;
+1 긍정     45393
+2 부정     32686
+3 중립       134
+4 &lt;NA&gt;   2187937
+
+$title
+[1] "수자원공사 긍부정"
+
+attr(,"class")
+[1] "labels"</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>s_df <span class="sc">%&gt;%</span>   </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"피해"</span>,<span class="st">"힌남노"</span>,<span class="st">"안전"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍정어 부정어"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining, by = "word"</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="zzz_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+<p><img src="zzz_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>text.s <span class="ot">&lt;-</span> s_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
+</section>
+<section id="수자원의-긍정어로는-대상-개선-혁신-발전-등이-있고" class="level3">
+<h3 class="anchored" data-anchor-id="수자원의-긍정어로는-대상-개선-혁신-발전-등이-있고">수자원의 긍정어로는 대상, 개선, 혁신, 발전 등이 있고,</h3>
+</section>
+<section id="부정어로는-위기-부족-어려움-재난-등이-있습니다." class="level3">
+<h3 class="anchored" data-anchor-id="부정어로는-위기-부족-어려움-재난-등이-있습니다.">부정어로는 위기, 부족, 어려움, 재난 등이 있습니다.</h3>
+</section>
+<section id="긍정적인-단어가-많지만-재난-피해관련-기사의-수가-많아-피해관련-키워드를-삭제하였습니다." class="level3">
+<h3 class="anchored" data-anchor-id="긍정적인-단어가-많지만-재난-피해관련-기사의-수가-많아-피해관련-키워드를-삭제하였습니다.">긍정적인 단어가 많지만, 재난 피해관련 기사의 수가 많아 피해관련 키워드를 삭제하였습니다.</h3>
+</section>
+<section id="최근-힌남노-폭우등으로-인한-피해등-재난-관련-보도가-주를-이루었습니다." class="level3">
+<h3 class="anchored" data-anchor-id="최근-힌남노-폭우등으로-인한-피해등-재난-관련-보도가-주를-이루었습니다.">최근 힌남노, 폭우등으로 인한 피해등 재난 관련 보도가 주를 이루었습니다.</h3>
+</section>
+<section id="수자원공사가-민생과-더욱-가까운-만큼-기사의-수가-많아-자료수집표본의-수에-있어서-차이가-많이-났고" class="level3">
+<h3 class="anchored" data-anchor-id="수자원공사가-민생과-더욱-가까운-만큼-기사의-수가-많아-자료수집표본의-수에-있어서-차이가-많이-났고">수자원공사가 민생과 더욱 가까운 만큼 기사의 수가 많아 자료수집표본의 수에 있어서 차이가 많이 났고,</h3>
+</section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
 <!-- -->
 
+</section>
 </section>
 
 </main>
@@ -696,185 +765,278 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb51" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "수자원공사, 마사회 기사 비교분석"</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> 언론홍보학과 2019102107 김지후</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-style:</span><span class="co"> default</span></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> "#6E6E6E"</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2022-10-12</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## 빅카인즈에서 데이터셋을 추출해 두 공사간 비교분석을 실시함</span></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. 필요 패키지 설치</span></span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 각 공사 키워드별 상위단어 분석</span></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. 각 공사 키워드별 긍정, 부정단어 분석</span></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="fu">### 필요 패키지 설치</span></span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
-<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
-<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidytext"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
-<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"kableExtra"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
-<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"wordcloud"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
-<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
-<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/."</span>)</span>
-<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>)</span>
-<span id="cb51-45"><a href="#cb51-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a>senti_name_v <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/."</span>)[<span class="dv">9</span>]</span>
-<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a>senti_name_v</span>
-<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-52"><a href="#cb51-52" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">str_extract</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">|</span><span class="sc">\n</span><span class="st">| "</span>)</span>
-<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
-<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F)</span>
-<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span>
-<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-62"><a href="#cb51-62" aria-hidden="true" tabindex="-1"></a>senti_dic_df[<span class="dv">1-5</span>, ]</span>
-<span id="cb51-63"><a href="#cb51-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-64"><a href="#cb51-64" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> senti_dic_df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">word =</span> X1, <span class="at">sScore =</span> X2)</span>
-<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span>
-<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## 키워드 주요 단어 분석</span></span>
-<span id="cb51-69"><a href="#cb51-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-72"><a href="#cb51-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb51-73"><a href="#cb51-73" aria-hidden="true" tabindex="-1"></a>text.v <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"마사회키워드.xlsx"</span>)</span>
-<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a>text.z <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"수자원키워드.xlsx"</span>)</span>
-<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a>text.v_df <span class="ot">&lt;-</span>  text.v <span class="sc">%&gt;%</span> </span>
-<span id="cb51-77"><a href="#cb51-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-78"><a href="#cb51-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
-<span id="cb51-83"><a href="#cb51-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-84"><a href="#cb51-84" aria-hidden="true" tabindex="-1"></a>text.v_df <span class="sc">%&gt;%</span> </span>
-<span id="cb51-85"><a href="#cb51-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb51-86"><a href="#cb51-86" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 키워드 감정빈도 분석"</span>)</span>
-<span id="cb51-87"><a href="#cb51-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-88"><a href="#cb51-88" aria-hidden="true" tabindex="-1"></a>text.z_df <span class="ot">&lt;-</span> text.z <span class="sc">%&gt;%</span> </span>
-<span id="cb51-89"><a href="#cb51-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-90"><a href="#cb51-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-91"><a href="#cb51-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-92"><a href="#cb51-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-93"><a href="#cb51-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"대상"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-94"><a href="#cb51-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-95"><a href="#cb51-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
-<span id="cb51-96"><a href="#cb51-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-97"><a href="#cb51-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-98"><a href="#cb51-98" aria-hidden="true" tabindex="-1"></a>text.z_df <span class="sc">%&gt;%</span> </span>
-<span id="cb51-99"><a href="#cb51-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb51-100"><a href="#cb51-100" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원 공사 키워드 분석"</span>)</span>
-<span id="cb51-101"><a href="#cb51-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-102"><a href="#cb51-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-103"><a href="#cb51-103" aria-hidden="true" tabindex="-1"></a>text.v <span class="sc">%&gt;%</span> </span>
-<span id="cb51-104"><a href="#cb51-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-105"><a href="#cb51-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-106"><a href="#cb51-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-107"><a href="#cb51-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-108"><a href="#cb51-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-109"><a href="#cb51-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-110"><a href="#cb51-110" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-111"><a href="#cb51-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span>
-<span id="cb51-112"><a href="#cb51-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-113"><a href="#cb51-113" aria-hidden="true" tabindex="-1"></a>text.z <span class="sc">%&gt;%</span> </span>
-<span id="cb51-114"><a href="#cb51-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-115"><a href="#cb51-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-116"><a href="#cb51-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-117"><a href="#cb51-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-118"><a href="#cb51-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-119"><a href="#cb51-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-120"><a href="#cb51-120" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-121"><a href="#cb51-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span>
-<span id="cb51-122"><a href="#cb51-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-123"><a href="#cb51-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-124"><a href="#cb51-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-125"><a href="#cb51-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-126"><a href="#cb51-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-127"><a href="#cb51-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## 공사간 긍정, 부정어 분석</span></span>
-<span id="cb51-128"><a href="#cb51-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-131"><a href="#cb51-131" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb51-132"><a href="#cb51-132" aria-hidden="true" tabindex="-1"></a>text.z <span class="sc">%&gt;%</span> </span>
-<span id="cb51-133"><a href="#cb51-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-134"><a href="#cb51-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-135"><a href="#cb51-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
-<span id="cb51-136"><a href="#cb51-136" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-137"><a href="#cb51-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
-<span id="cb51-138"><a href="#cb51-138" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍부정"</span>)</span>
-<span id="cb51-139"><a href="#cb51-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-140"><a href="#cb51-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-141"><a href="#cb51-141" aria-hidden="true" tabindex="-1"></a>text.v <span class="sc">%&gt;%</span> </span>
-<span id="cb51-142"><a href="#cb51-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-143"><a href="#cb51-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-144"><a href="#cb51-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
-<span id="cb51-145"><a href="#cb51-145" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-146"><a href="#cb51-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
-<span id="cb51-147"><a href="#cb51-147" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍부정"</span>)</span>
-<span id="cb51-148"><a href="#cb51-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-149"><a href="#cb51-149" aria-hidden="true" tabindex="-1"></a>text.z <span class="sc">%&gt;%</span>   </span>
-<span id="cb51-150"><a href="#cb51-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-151"><a href="#cb51-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-152"><a href="#cb51-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb51-153"><a href="#cb51-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb51-154"><a href="#cb51-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-155"><a href="#cb51-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb51-156"><a href="#cb51-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-157"><a href="#cb51-157" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb51-158"><a href="#cb51-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-159"><a href="#cb51-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
-<span id="cb51-160"><a href="#cb51-160" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
-<span id="cb51-161"><a href="#cb51-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb51-162"><a href="#cb51-162" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb51-163"><a href="#cb51-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍정어 부정어"</span>)</span>
-<span id="cb51-164"><a href="#cb51-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-165"><a href="#cb51-165" aria-hidden="true" tabindex="-1"></a>text.v <span class="sc">%&gt;%</span>   </span>
-<span id="cb51-166"><a href="#cb51-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-167"><a href="#cb51-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
-<span id="cb51-168"><a href="#cb51-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb51-169"><a href="#cb51-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb51-170"><a href="#cb51-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-171"><a href="#cb51-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
-<span id="cb51-172"><a href="#cb51-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-173"><a href="#cb51-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb51-174"><a href="#cb51-174" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb51-175"><a href="#cb51-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
-<span id="cb51-176"><a href="#cb51-176" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
-<span id="cb51-177"><a href="#cb51-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb51-178"><a href="#cb51-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb51-179"><a href="#cb51-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍정어 부정어"</span>)</span>
-<span id="cb51-180"><a href="#cb51-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-181"><a href="#cb51-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-182"><a href="#cb51-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-183"><a href="#cb51-183" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb51-184"><a href="#cb51-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-187"><a href="#cb51-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "수자원공사, 마사회 기사 비교분석"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> 언론홍보학과 2019102107 김지후</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-style:</span><span class="co"> default</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="an">title-block-banner:</span><span class="co"> "#6E6E6E"</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2022-10-12</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## 빅카인즈에서 데이터셋을 추출해 두 공사간 비교분석을 실시함</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. 필요 패키지 설치</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. 각 공사 키워드별 상위단어 분석</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. 각 공사 키워드별 긍정, 부정단어 분석</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. 필요 패키지 설치</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>package_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"tidytext"</span>, <span class="st">"readxl"</span>, <span class="st">"kableExtra"</span>, </span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"multilinguer"</span>, <span class="st">"RcppMeCab"</span>, <span class="st">"KoNLP"</span>, <span class="st">"lubridate"</span>, </span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"tidylo"</span>, <span class="st">"stm"</span>, <span class="st">"reshape2"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, </span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"stringr"</span>, <span class="st">"rvest"</span>, <span class="st">"wordcloud"</span>, <span class="st">"tm"</span>, <span class="st">"VennDiagram"</span>, <span class="st">"gt"</span>,<span class="at">repos =</span> <span class="st">"http://cran.us.r-project.org"</span>)</span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidylo)</span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wordcloud)</span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/."</span>)</span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>)</span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>senti_name_v <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/knusenti/KnuSentiLex-master/."</span>)[<span class="dv">9</span>]</span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a>senti_name_v</span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a><span class="fu">read_lines</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">%&gt;%</span> <span class="fu">str_extract</span>(<span class="st">"</span><span class="sc">\t</span><span class="st">|</span><span class="sc">\n</span><span class="st">| "</span>)</span>
+<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v)) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a><span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">10</span>)</span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="fu">str_c</span>(<span class="st">"data/knusenti/KnuSentiLex-master/"</span>, senti_name_v), <span class="at">col_names =</span> F)</span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a>senti_dic_df[<span class="dv">1-5</span>, ]</span>
+<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a>senti_dic_df <span class="ot">&lt;-</span> senti_dic_df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">word =</span> X1, <span class="at">sScore =</span> X2)</span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(senti_dic_df)</span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## 마사회 키워드 주요 단어 분석</span></span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a>###한국마사회 키워드 분석 </span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a>m_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"masahwe.xlsx"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(main)</span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a>m_df2 <span class="ot">&lt;-</span> m_df</span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a>m_tk <span class="ot">&lt;-</span> m_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb45-80"><a href="#cb45-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb45-81"><a href="#cb45-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> T)</span>
+<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-83"><a href="#cb45-83" aria-hidden="true" tabindex="-1"></a>m_tk <span class="ot">&lt;-</span> m_tk <span class="sc">%&gt;%</span> </span>
+<span id="cb45-84"><a href="#cb45-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"한국마사회"</span>, <span class="st">"제주"</span>, <span class="st">"경마"</span>, <span class="st">"영천"</span>, <span class="st">"기수"</span>, <span class="st">"지부"</span>, <span class="st">"마사회"</span>,<span class="st">"기관"</span>,<span class="st">"코로나"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-85"><a href="#cb45-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(word, <span class="st">"[:alpha:]+"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-86"><a href="#cb45-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-87"><a href="#cb45-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-88"><a href="#cb45-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n))</span>
+<span id="cb45-89"><a href="#cb45-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-90"><a href="#cb45-90" aria-hidden="true" tabindex="-1"></a>m_tk <span class="sc">%&gt;%</span></span>
+<span id="cb45-91"><a href="#cb45-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
+<span id="cb45-92"><a href="#cb45-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb45-93"><a href="#cb45-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb45-94"><a href="#cb45-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 총빈도"</span>)</span>
+<span id="cb45-95"><a href="#cb45-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-96"><a href="#cb45-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-97"><a href="#cb45-97" aria-hidden="true" tabindex="-1"></a>m_df2 <span class="ot">&lt;-</span>  m_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-98"><a href="#cb45-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-99"><a href="#cb45-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="fu">factor</span>(<span class="fu">row_number</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-100"><a href="#cb45-100" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-101"><a href="#cb45-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-102"><a href="#cb45-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-103"><a href="#cb45-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-104"><a href="#cb45-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb45-105"><a href="#cb45-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-106"><a href="#cb45-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-107"><a href="#cb45-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-108"><a href="#cb45-108" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-109"><a href="#cb45-109" aria-hidden="true" tabindex="-1"></a><span class="fu">### 마사회의 단어 빈도수를 살펴보면, 경주마와 관련해 벌어들인 돈을 다른 지역 사업에 지나라가 지원하는 기사가 많아</span></span>
+<span id="cb45-110"><a href="#cb45-110" aria-hidden="true" tabindex="-1"></a><span class="fu">### 나라가 지정한 유흥산업으로 번 돈을 많은 부분 환원한다는 평소 마사회의 이미지에 부합했습니다. </span></span>
+<span id="cb45-111"><a href="#cb45-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-114"><a href="#cb45-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-115"><a href="#cb45-115" aria-hidden="true" tabindex="-1"></a>m_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb45-116"><a href="#cb45-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb45-117"><a href="#cb45-117" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 키워드 감정빈도 분석"</span>)</span>
+<span id="cb45-118"><a href="#cb45-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-119"><a href="#cb45-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-120"><a href="#cb45-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-123"><a href="#cb45-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-124"><a href="#cb45-124" aria-hidden="true" tabindex="-1"></a>m_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-125"><a href="#cb45-125" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-126"><a href="#cb45-126" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-127"><a href="#cb45-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-128"><a href="#cb45-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-129"><a href="#cb45-129" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-130"><a href="#cb45-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-131"><a href="#cb45-131" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-132"><a href="#cb45-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span>
+<span id="cb45-133"><a href="#cb45-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-134"><a href="#cb45-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-135"><a href="#cb45-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-136"><a href="#cb45-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### 수자원 공사 키워드 분석 </span></span>
+<span id="cb45-139"><a href="#cb45-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-140"><a href="#cb45-140" aria-hidden="true" tabindex="-1"></a>s_df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"수자원공사 2020.01.01~.xlsx"</span>)</span>
+<span id="cb45-141"><a href="#cb45-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-142"><a href="#cb45-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-143"><a href="#cb45-143" aria-hidden="true" tabindex="-1"></a>s_df2 <span class="ot">&lt;-</span> s_df</span>
+<span id="cb45-144"><a href="#cb45-144" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-145"><a href="#cb45-145" aria-hidden="true" tabindex="-1"></a>s_tk <span class="ot">&lt;-</span> s_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb45-146"><a href="#cb45-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">drop =</span> F) <span class="sc">%&gt;%</span></span>
+<span id="cb45-147"><a href="#cb45-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> T)</span>
+<span id="cb45-148"><a href="#cb45-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-149"><a href="#cb45-149" aria-hidden="true" tabindex="-1"></a>s_tk <span class="ot">&lt;-</span> s_tk <span class="sc">%&gt;%</span> </span>
+<span id="cb45-150"><a href="#cb45-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"한국수자원공사"</span>, <span class="st">"제주"</span>, <span class="st">"지역"</span>, <span class="st">"사업"</span>, <span class="st">"환경부"</span>, <span class="st">"주민"</span>, <span class="st">"수돗물"</span>,<span class="st">"수자원공사"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-151"><a href="#cb45-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(word, <span class="st">"[:alpha:]+"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-152"><a href="#cb45-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-153"><a href="#cb45-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(n, <span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-154"><a href="#cb45-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n))</span>
+<span id="cb45-155"><a href="#cb45-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-156"><a href="#cb45-156" aria-hidden="true" tabindex="-1"></a>s_tk <span class="sc">%&gt;%</span></span>
+<span id="cb45-157"><a href="#cb45-157" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(word, n)) <span class="sc">+</span></span>
+<span id="cb45-158"><a href="#cb45-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb45-159"><a href="#cb45-159" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb45-160"><a href="#cb45-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원 총빈도"</span>)</span>
+<span id="cb45-161"><a href="#cb45-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-162"><a href="#cb45-162" aria-hidden="true" tabindex="-1"></a>s_df2 <span class="ot">&lt;-</span> s_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-163"><a href="#cb45-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-164"><a href="#cb45-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ID =</span> <span class="fu">factor</span>(<span class="fu">row_number</span>())) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-165"><a href="#cb45-165" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-166"><a href="#cb45-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, sScore, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-167"><a href="#cb45-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-168"><a href="#cb45-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"피해"</span>,<span class="st">"안전"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-169"><a href="#cb45-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">word =</span> <span class="fu">reorder</span>(word, n)) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>)</span>
+<span id="cb45-171"><a href="#cb45-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-172"><a href="#cb45-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-173"><a href="#cb45-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-177"><a href="#cb45-177" aria-hidden="true" tabindex="-1"></a>s_df2 <span class="sc">%&gt;%</span> </span>
+<span id="cb45-178"><a href="#cb45-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(n, word, <span class="at">fill =</span> sScore), <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb45-179"><a href="#cb45-179" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원 공사 키워드 분석"</span>)</span>
+<span id="cb45-180"><a href="#cb45-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-181"><a href="#cb45-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-182"><a href="#cb45-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-185"><a href="#cb45-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-186"><a href="#cb45-186" aria-hidden="true" tabindex="-1"></a>s_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-188"><a href="#cb45-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-189"><a href="#cb45-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-190"><a href="#cb45-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(emotion <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-191"><a href="#cb45-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-192"><a href="#cb45-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-193"><a href="#cb45-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"피해"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-194"><a href="#cb45-194" aria-hidden="true" tabindex="-1"></a>  reshape2<span class="sc">::</span><span class="fu">acast</span>(word <span class="sc">~</span> emotion, <span class="at">value.var =</span> <span class="st">"n"</span>, <span class="at">fill =</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-195"><a href="#cb45-195" aria-hidden="true" tabindex="-1"></a>  <span class="fu">comparison.cloud</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>), <span class="at">max.words =</span> <span class="dv">50</span>)</span>
+<span id="cb45-196"><a href="#cb45-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-197"><a href="#cb45-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-198"><a href="#cb45-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-199"><a href="#cb45-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-200"><a href="#cb45-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-201"><a href="#cb45-201" aria-hidden="true" tabindex="-1"></a><span class="fu">## 공사간 긍정, 부정어 분석</span></span>
+<span id="cb45-202"><a href="#cb45-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-203"><a href="#cb45-203" aria-hidden="true" tabindex="-1"></a>###한국 마사회 감성 분석 </span>
+<span id="cb45-204"><a href="#cb45-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-207"><a href="#cb45-207" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-208"><a href="#cb45-208" aria-hidden="true" tabindex="-1"></a>m_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-209"><a href="#cb45-209" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-210"><a href="#cb45-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-211"><a href="#cb45-211" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
+<span id="cb45-212"><a href="#cb45-212" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-213"><a href="#cb45-213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
+<span id="cb45-214"><a href="#cb45-214" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍부정"</span>)</span>
+<span id="cb45-215"><a href="#cb45-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-216"><a href="#cb45-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-217"><a href="#cb45-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-218"><a href="#cb45-218" aria-hidden="true" tabindex="-1"></a>m_df <span class="sc">%&gt;%</span>   </span>
+<span id="cb45-219"><a href="#cb45-219" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-220"><a href="#cb45-220" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-221"><a href="#cb45-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb45-222"><a href="#cb45-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb45-223"><a href="#cb45-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-224"><a href="#cb45-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb45-225"><a href="#cb45-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-226"><a href="#cb45-226" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-227"><a href="#cb45-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-228"><a href="#cb45-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb45-229"><a href="#cb45-229" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
+<span id="cb45-230"><a href="#cb45-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb45-231"><a href="#cb45-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb45-232"><a href="#cb45-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"마사회 긍정어 부정어"</span>)</span>
+<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a>text.m <span class="ot">&lt;-</span> m_df</span>
+<span id="cb45-235"><a href="#cb45-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-236"><a href="#cb45-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-237"><a href="#cb45-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-238"><a href="#cb45-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-239"><a href="#cb45-239" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-240"><a href="#cb45-240" aria-hidden="true" tabindex="-1"></a><span class="fu">### 마사회의 긍정어로는 대상, 감사, 안전, 발전, 개선 등이 있고, </span></span>
+<span id="cb45-241"><a href="#cb45-241" aria-hidden="true" tabindex="-1"></a><span class="fu">### 부정어로는 의혹, 불법, 위기, 죽음, 피해등이 있습니다.. </span></span>
+<span id="cb45-242"><a href="#cb45-242" aria-hidden="true" tabindex="-1"></a><span class="fu">### 긍정어의 표현수가 부정어보다 2배 많은 것을 보아, 대체적으로 긍정적인 기사의 수가 많다는 것을 파악할 수 있습니다. </span></span>
+<span id="cb45-243"><a href="#cb45-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-244"><a href="#cb45-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-245"><a href="#cb45-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-246"><a href="#cb45-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-247"><a href="#cb45-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-248"><a href="#cb45-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-249"><a href="#cb45-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-250"><a href="#cb45-250" aria-hidden="true" tabindex="-1"></a>###한국 수자원공사 감성 분석</span>
+<span id="cb45-251"><a href="#cb45-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-254"><a href="#cb45-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-255"><a href="#cb45-255" aria-hidden="true" tabindex="-1"></a>s_df <span class="sc">%&gt;%</span> </span>
+<span id="cb45-256"><a href="#cb45-256" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-257"><a href="#cb45-257" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-258"><a href="#cb45-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sScore =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;=</span> <span class="dv">1</span>, <span class="st">"긍정"</span>,</span>
+<span id="cb45-259"><a href="#cb45-259" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">ifelse</span>(sScore <span class="sc">&lt;=</span> <span class="sc">-</span><span class="dv">1</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-260"><a href="#cb45-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(sScore) <span class="sc">%&gt;%</span></span>
+<span id="cb45-261"><a href="#cb45-261" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍부정"</span>)</span>
+<span id="cb45-262"><a href="#cb45-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-263"><a href="#cb45-263" aria-hidden="true" tabindex="-1"></a>s_df <span class="sc">%&gt;%</span>   </span>
+<span id="cb45-264"><a href="#cb45-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_tokens</span>(word, main, <span class="at">token =</span> <span class="st">"words"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-265"><a href="#cb45-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(senti_dic_df) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-266"><a href="#cb45-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">emotion =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"부정"</span>, <span class="st">"중립"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb45-267"><a href="#cb45-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(sScore <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"1"</span>, <span class="fu">ifelse</span>(sScore <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="st">"0"</span>, <span class="st">"2"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb45-268"><a href="#cb45-268" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(label <span class="sc">!=</span> <span class="st">"중립"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-269"><a href="#cb45-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(word, emotion, label, <span class="at">sort =</span> T) <span class="sc">%&gt;%</span></span>
+<span id="cb45-270"><a href="#cb45-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(word) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-271"><a href="#cb45-271" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>word <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"피해"</span>,<span class="st">"힌남노"</span>,<span class="st">"안전"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-272"><a href="#cb45-272" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">label =</span> <span class="fu">ifelse</span>(label <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"긍정"</span>, <span class="st">"부정"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb45-273"><a href="#cb45-273" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb45-274"><a href="#cb45-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n,</span>
+<span id="cb45-275"><a href="#cb45-275" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> <span class="fu">reorder</span>(word, n), <span class="at">fill =</span> label)) <span class="sc">+</span></span>
+<span id="cb45-276"><a href="#cb45-276" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb45-277"><a href="#cb45-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>label, <span class="at">scale =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb45-278"><a href="#cb45-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"수자원공사 긍정어 부정어"</span>)</span>
+<span id="cb45-279"><a href="#cb45-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-280"><a href="#cb45-280" aria-hidden="true" tabindex="-1"></a>text.s <span class="ot">&lt;-</span> s_df</span>
+<span id="cb45-281"><a href="#cb45-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-282"><a href="#cb45-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-283"><a href="#cb45-283" aria-hidden="true" tabindex="-1"></a><span class="fu">### 수자원의 긍정어로는 대상, 개선, 혁신, 발전 등이 있고, </span></span>
+<span id="cb45-284"><a href="#cb45-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### 부정어로는 위기, 부족, 어려움, 재난 등이 있습니다. </span></span>
+<span id="cb45-285"><a href="#cb45-285" aria-hidden="true" tabindex="-1"></a><span class="fu">### 긍정적인 단어가 많지만, 재난 피해관련 기사의 수가 많아 피해관련 키워드를 삭제하였습니다. </span></span>
+<span id="cb45-286"><a href="#cb45-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### 최근 힌남노, 폭우등으로 인한 피해등 재난 관련 보도가 주를 이루었습니다. </span></span>
+<span id="cb45-287"><a href="#cb45-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-288"><a href="#cb45-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-289"><a href="#cb45-289" aria-hidden="true" tabindex="-1"></a><span class="fu">### 수자원공사가 민생과 더욱 가까운 만큼 기사의 수가 많아 자료수집표본의 수에 있어서 차이가 많이 났고,</span></span>
+<span id="cb45-290"><a href="#cb45-290" aria-hidden="true" tabindex="-1"></a><span class="fu">### </span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
